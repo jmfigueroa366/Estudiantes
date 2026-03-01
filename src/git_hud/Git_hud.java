@@ -204,7 +204,7 @@ public class Git_hud {
                 for (Asignatura as: asignaturaEstudiante) {
                     if (as.codigo.equals ( encontrar.codigo)) {
                         asignaturaEstudiante.remove(as);
-                        System.out.println("Asignatura eliminada con exito!!");
+                        System.out.println("Asignatura eliminada con exito!");
                         eliminada=true;
                         break;
                     }
