@@ -114,4 +114,38 @@ public class Git_hud {
         }
         
     }
+    
+    public static void eliminarNota() throws IOException{
+        
+        System.out.println("Ingrese el codigo de la nota a eliminar");
+        Double valor=Double.parseDouble(leer.readLine());
+        
+        System.out.println("Ingrese la nota de la materia ");
+        String codigo=leer.readLine();
+        
+        boolean encontrado=false;
+        
+        for (int i = 0; i < notas.size(); i++) {
+            
+            Nota n=notas.get(i);
+            
+            if (valor.equals(n.getValor()) && codigo.equals(n.getAsignatura())) {
+                
+                notas.remove(n);
+                
+                encontrado=true;
+                
+                System.out.println("La nota se eliminó correctamente");
+                
+                break;
+                
+            }
+            
+        }
+        
+        if (!encontrado) {
+            System.out.println("Los valores no coinciden con los registros");
+        }
+        
+    }
 }
