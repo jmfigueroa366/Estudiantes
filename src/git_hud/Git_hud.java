@@ -187,6 +187,36 @@ public class Git_hud {
             System.out.println("Asignatura actualizada con exito: " + encontrada);
         }
     }
+    
+    private static void eliminarAsignatura() {
+        System.out.println("Ingrese el codigo de la asignatura que desea eliminar: ");
+        String codigo = sc.nextLine();
+        Asignatura encontrar = buscarAsignaturaPorCodigo (codigo);
+        if (encontrar == null) {
+            System.out.println("Asignatura no encontrada");
+        } else {
+            System.out.println("Informacion de la asignatura: Nombre: " + encontrar.nombre + ", creditos: " + encontrar.creditos + ", docente: " + encontrar.docente);
+            System.out.println("¿Esta seguro que desea eliminar esta asignatura? (S/N)");
+            String conf = sc.nextLine().toUpperCase();
+            boolean confirmar = conf.equals("S");
+            if (confirmar) {
+                boolean eliminada=false;
+                for (Asignatura as: asignaturaEstudiante) {
+                    if (as.codigo.equals ( encontrar.codigo)) {
+                        asignaturaEstudiante.remove(as);
+                        System.out.println("Asignatura eliminada con exito!!");
+                        eliminada=true;
+                        break;
+                    }
+                }
+                if (!eliminada) {
+                    System.out.println("La asignatura no esta registrada");
+                }
+            } else {
+                System.out.println("Cancelado...");
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
