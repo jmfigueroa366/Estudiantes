@@ -127,8 +127,32 @@ public class Git_hud {
         
     }
     
+    private static void listarAsignatura() {
+        if (asignaturaEstudiante.isEmpty()) {
+            System.out.println("No hay asignaturas registradas");
+        } else {
+            System.out.println("Asinatura registrada por el estudiante: ");
+            for (Asignatura e: asignaturaEstudiante) {
+                System.out.println("Codigo: " + e.codigo + ", Nombre: " + e.nombre + ", Creditos: " + e.creditos + ", Docente: " + e.docente);
+            }
+        }
 
     
+    private void buscarAsignatura () {
+        boolean encontrado=false;
+        System.out.println("Ingrese el codigo de la asignatura que desea buscar:");
+        String codigo = sc.nextLine();
+        for (Asignatura e: asignaturaEstudiante) {
+            if (e.codigo.equalsIgnore(codigo)) {
+                encontrado=true;
+                System.out.println("Materia encontrada: Nombre: " + e.nombre + ", Creditos: " + e.creditos + ", Docente: " + e.docente);
+                break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("Materia no encontrada");
+        }
+    }
     
 
     /**
