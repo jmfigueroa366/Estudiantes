@@ -13,9 +13,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Git_hud {
+    
     private static ArrayList<Asignatura> asignatura = new ArrayList <> ();
     private static ArrayList<Asignatura> asignaturaEstudiante = new ArrayList <> ();
     private static Scanner sc = new Scanner (System.in);
+    
+}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+
+public static void Estudiante() {
+
     private String codigo;
     private String nombre;
     private String apellido;
@@ -217,12 +229,4 @@ public class Git_hud {
             }
         }
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }
