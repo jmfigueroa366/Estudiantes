@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public class Git_hud {
     
-    ArrayList<Nota> notas=new ArrayList<>();
-    ArrayList<Asignatura> asignatura=new ArrayList<>();
+    static ArrayList<Nota> notas=new ArrayList<>();
+    static ArrayList<Asignatura> asignatura=new ArrayList<>();
     static BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
 
     /**
@@ -46,6 +46,42 @@ public class Git_hud {
      
     }
     
+    public static void listarNotas() throws IOException{
+        
+        for (Nota n2 : notas) {
+            
+            System.out.println("Codigo studiante: " + n2.getCodigoEstudiante());
+            System.out.println("Asignatura: " + n2.getAsignatura());
+            System.out.println("Valor: " + n2.getValor());
+            System.out.println("Creditos " + n2.getCreditos());
+            System.out.println("=================================");
+            
+        }
+        
+    }
     
+    public static void buscarNotas(String c,double c2) throws IOException{
+        
+        boolean encontrado=false;
+        boolean nexiste=false;
+        
+        //aqui va un bucle que buscara el estudiante al que se le quiere consultar la nota
+        for (Nota n : notas) {
+            
+            //aqui va un bucle con el que se buscara la nota en las notas del estudiante
+            
+        }
+        
+        if (!encontrado) {
+            System.out.println("No se encontró el estudiante");
+        }
+        
+        if (!nexiste) {
+            System.out.println("El estudiante no posee esa nota");
+        }
+        
+    }
+    
+   
     
 }
