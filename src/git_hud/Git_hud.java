@@ -136,9 +136,9 @@ public class Git_hud {
                 System.out.println("Codigo: " + e.codigo + ", Nombre: " + e.nombre + ", Creditos: " + e.creditos + ", Docente: " + e.docente);
             }
         }
+    }
 
-    
-    private void buscarAsignatura () {
+    private static void buscarAsignatura () {
         boolean encontrado=false;
         System.out.println("Ingrese el codigo de la asignatura que desea buscar:");
         String codigo = sc.nextLine();
@@ -154,6 +154,39 @@ public class Git_hud {
         }
     }
     
+    private Asignatura buscarAsignaturaPorCodigo (String codigo) {
+        for (Asignatura e: asignaturaEstudiante) {
+            if (e.codigo.equalsIgnoreCase(codigo)) {
+                return e;
+            }
+        }
+        return null;
+    }
+    
+    private static void actualizarAsignatura() {
+        System.out.println("Ingrese el codigo de la asignatura a actualizar: ");
+        String codigo = sc.nextLine();
+        
+        Asignatura encontrada = buscarAsignaturaPorCodigo (codigo);
+        if (encontrada == null) {
+            System.out.println("Asignatura no encontrada");
+        } else {
+            System.out.println("Asignatura actual: " + encontrada);
+            System.out.println("Ingrese nuevo nombre: ");
+            String nuevoNombre = sc.nextLine();
+            encontrada.nombre=nuevoNombre;
+            
+            System.out.println("Ingrese actualización de la cantidad de creditos: ");
+            int nuevosCreditos = Integer.parseInt(sc.nextLine());
+            encontrada.creditos=nuevosCreditos;
+            
+            System.out.println("Ingrese nuevo nombre del docente: ");
+            String nuevoDocente = sc.nextLine();
+            encontrada.docente=nuevoDocente;
+            
+            System.out.println("Asignatura actualizada con exito: " + encontrada);
+        }
+    }
 
     /**
      * @param args the command line arguments
