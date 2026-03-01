@@ -89,6 +89,11 @@ public class Nota {
     public void setDocente(String docente) {
         this.docente = docente;
     }
+
+    @Override
+    public String toString() {
+        return "Nota{" + "codigoEstudiante=" + codigoEstudiante + ", codigoAsignatura=" + codigoAsignatura + ", valor=" + valor + ", codigo=" + codigo + ", nombre=" + nombre + ", creditos=" + creditos + ", docente=" + docente + '}';
+    }
     
     
 }
