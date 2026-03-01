@@ -9,6 +9,14 @@ package git_hud;
  * @author jesus
  */
 public class Git_hud {
+    private String codigo;
+    private String nombre;
+    private String apellido;
+    private int edad; 
+    private int semestre;
+    
+    
+    
 
     /**
      * @param args the command line arguments
