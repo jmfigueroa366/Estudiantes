@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Git_hud {
+    private static ArrayList<Asignatura> asignatura = new ArrayList <> ();
+    private static ArrayList<Asignatura> asignaturaEstudiante = new ArrayList <> ();
+    private static Scanner sc = new Scanner (System.in);
     private String codigo;
     private String nombre;
     private String apellido;
@@ -72,7 +75,57 @@ public class Git_hud {
         return "Codigo: " + codigo + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Edad: " + edad + ", Semestre: " semestre;
     }
     
-    private
+    private static void registrarAsignatura() {
+        boolean registrarOtro = true;
+        boolean isFind = true;
+        
+        Asignatura asignaturaEncontrada = new Asignatura ();
+        while(registrarOtro) {
+            try {
+                isFind=false;
+                boolean asignaturaNoRegistrada=true;
+                System.out.println("¿Desea registrar una asignatura? (S/N)");
+                String tipo = sc.nextLine().toUpperCase();
+                registrarOtro = tipo.equals("S");
+                if(registrarOtro) {
+                    System.out.println("Ingrese el codigo de la asignatura que desea registrar: ");
+                    String codigo = sc.nextLine();
+                    for (Asignatura as: asignatura) {
+                        if (codigo.equals(as.codigo)) {
+                            isFind=true;
+                            asignaturaEncontrada=as;
+                            break;
+                        }
+                    }
+                    if(!isFind) {
+                        System.out.println("La materia no existe");
+                    } else {
+                        System.out.println("Materia encontarda, codigo:" + asignaturaEncontrada.codigo + ", nombre: " + asignaturaEncontrada.nombre);
+                        System.out.println("¿Esta seguro que desea matricular esta asignatura? (S/N)");
+                            String conf = sc.nextLine().toUpperCase();
+                            boolean confirmar = conf.equals("S");
+                            if (confirmar) {
+                                for (Asignatura as: asignaturaEstudiante) {
+                                    if (as.codigo.equals(asignaturaEncontrada.codigo)) {
+                                        asignaturaNoRegistrada=false;
+                                        System.out.println("Asignatura ya matruculada!!!");
+                                        break;
+                                    }
+                                }
+                                if (asignaturaNoRegistrada) {
+                                    asignaturaEstudiante.add(asignaturaEncontrada);
+                                    System.out.println("Asignatura registrada con exito!!!");
+                                }
+                            }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        
+        
+    }
     
 
     
