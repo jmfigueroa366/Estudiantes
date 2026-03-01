@@ -11,28 +11,28 @@ package git_hud;
 public class Nota {
     // atributos temporales hasta que se cree la clase estudiante, luego se cambia//
     private String codigoEstudiante;
-    private String codigoAsignatura;
-    private double valor;
-    //
-    private String codigo;
     private String nombre;
+    private String apellido;
+    private int edad;
+    private int semestre;
+    //
+    Asignatura asignatura;
+    private double valor;
     private int creditos;
-    private String docente;
 
     public Nota() {
     }
 
-    public Nota(String codigoEstudiante, String codigoAsignatura, double valor, String codigo, String nombre, int creditos, String docente) {
+    public Nota(String codigoEstudiante, String nombre, String apellido, int edad, int semestre, Asignatura asignatura, double valor, int creditos) {
         this.codigoEstudiante = codigoEstudiante;
-        this.codigoAsignatura = codigoAsignatura;
-        this.valor = valor;
-        this.codigo = codigo;
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.semestre = semestre;
+        this.asignatura = asignatura;
+        this.valor = valor;
         this.creditos = creditos;
-        this.docente = docente;
     }
-    
-    
 
     public String getCodigoEstudiante() {
         return codigoEstudiante;
@@ -40,30 +40,6 @@ public class Nota {
 
     public void setCodigoEstudiante(String codigoEstudiante) {
         this.codigoEstudiante = codigoEstudiante;
-    }
-
-    public String getCodigoAsignatura() {
-        return codigoAsignatura;
-    }
-
-    public void setCodigoAsignatura(String codigoAsignatura) {
-        this.codigoAsignatura = codigoAsignatura;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -74,6 +50,46 @@ public class Nota {
         this.nombre = nombre;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public int getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     public int getCreditos() {
         return creditos;
     }
@@ -82,18 +98,12 @@ public class Nota {
         this.creditos = creditos;
     }
 
-    public String getDocente() {
-        return docente;
-    }
-
-    public void setDocente(String docente) {
-        this.docente = docente;
-    }
-
     @Override
     public String toString() {
-        return "Nota{" + "codigoEstudiante=" + codigoEstudiante + ", codigoAsignatura=" + codigoAsignatura + ", valor=" + valor + ", codigo=" + codigo + ", nombre=" + nombre + ", creditos=" + creditos + ", docente=" + docente + '}';
+        return "Nota{" + "codigoEstudiante=" + codigoEstudiante + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", semestre=" + semestre + ", asignatura=" + asignatura + ", valor=" + valor + ", creditos=" + creditos + '}';
     }
+    
+    
     
     
 }
