@@ -8,6 +8,10 @@ package git_hud;
  *
  * @author jesus
  */
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Git_hud {
     private String codigo;
     private String nombre;
@@ -62,6 +66,13 @@ public class Git_hud {
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
+    
+        @Override
+    public String toString() {
+        return "Codigo: " + codigo + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Edad: " + edad + ", Semestre: " semestre;
+    }
+    
+    private
     
 
     
