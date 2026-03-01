@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class Git_hud {
     
     static ArrayList<Nota> notas=new ArrayList<>();
-    static ArrayList<Asignatura> asignatura=new ArrayList<>();
+    static ArrayList<Asignatura> asignaturas=new ArrayList<>();
     static BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         // TODO code application logic here
     }
     
@@ -82,6 +82,36 @@ public class Git_hud {
         
     }
     
-   
-    
+    public static void actualizarNotas() throws IOException{
+        
+        System.out.println("Ingrese el codigo del estudiante: ");
+        String codigo=leer.readLine();
+        
+        System.out.println("Ingrese la asignatura: ");
+        String asig=leer.readLine();
+        
+        boolean encontrado=false;
+        
+        for (Nota n : notas) {
+            
+            if (!(codigo.equals(n.getCodigoEstudiante()) &&
+                asig.equals(n.getAsignatura()))) {
+                
+                System.out.println("Ingrese el nuevo valor");
+                double nvalor=Double.parseDouble(leer.readLine());
+                
+                n.setValor(nvalor);
+                
+                encontrado=true;
+                System.out.println("Se actualizó la nota");
+                break;
+            }
+            
+        }
+                
+        if (!encontrado) {
+            System.out.println("No se encontró el valor ingresado");
+        }
+        
+    }
 }
