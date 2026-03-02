@@ -23,7 +23,151 @@ public class Git_hud {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        mostrarMenu();
     }
+    
+    public static void mostrarMenu() {
+        int opcion;
+
+        do {
+            System.out.println("\n===== MENÚ PRINCIPAL =====");
+            System.out.println("1. Estudiantes");
+            System.out.println("2. Asignaturas");
+            System.out.println("3. Notas");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    menuEstudiantes();
+                    break;
+                case 2:
+                    menuAsignaturas();
+                    break;
+                case 3:
+                    menuNotas();
+                    break;
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+            }
+
+        } while (opcion != 0);
+    }
+        public static void menuAsignaturas() {
+        int opcion;
+
+        do {
+            System.out.println("\n--- MENÚ ASIGNATURAS ---");
+            System.out.println("1. Registrar");
+            System.out.println("2. Listar");
+            System.out.println("3. Buscar");
+            System.out.println("4. Actualizar");
+            System.out.println("5. Eliminar");
+            System.out.println("0. Volver");
+
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Registrar asignatura");
+                    registrarAsignatura();
+                    break;
+                case 2:
+                    System.out.println("Listar asignaturas");
+                    listarAsignatura();
+                    break;
+                case 3:
+                    System.out.println("Buscar asignatura");
+                    buscarAsignatura();
+                    break;
+                case 4:
+                    System.out.println("Actualizar asignatura");
+                    actualizarAsignatura();
+                    break;
+                case 5:
+                    System.out.println("Eliminar asignatura");
+                    eliminarAsignatura();
+                    break;
+            }
+
+        } while (opcion != 0);
+    }
+    
+    public static void menuEstudiantes() {
+        int opcion;
+
+        do {
+            System.out.println("\n--- MENÚ ESTUDIANTES ---");
+            System.out.println("1. Registrar");
+            System.out.println("2. Listar");
+            System.out.println("3. Buscar");
+            System.out.println("4. Actualizar");
+            System.out.println("5. Eliminar");
+            System.out.println("0. Volver");
+
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Registrar estudiante");
+                    break;
+                case 2:
+                    System.out.println("Listar estudiantes");
+                    break;
+                case 3:
+                    System.out.println("Buscar estudiante");
+                    break;
+                case 4:
+                    System.out.println("Actualizar estudiante");
+                    break;
+                case 5:
+                    System.out.println("Eliminar estudiante");
+                    break;
+            }
+
+        } while (opcion != 0);
+    }
+    
+        public static void menuNotas() {
+        int opcion;
+
+        do {
+            System.out.println("\n--- MENÚ NOTAS ---");
+            System.out.println("1. Registrar");
+            System.out.println("2. Listar");
+            System.out.println("3. Buscar");
+            System.out.println("4. Actualizar");
+            System.out.println("5. Eliminar");
+            System.out.println("0. Volver");
+
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Registrar nota");
+                    break;
+                case 2:
+                    System.out.println("Listar notas");
+                    break;
+                case 3:
+                    System.out.println("Buscar nota");
+                    break;
+                case 4:
+                    System.out.println("Actualizar nota");
+                    break;
+                case 5:
+                    System.out.println("Eliminar nota");
+                    break;
+            }
+
+        } while (opcion != 0);
+    }
+
     
     private static void registrarAsignatura() {
         boolean registrarOtro = true;
