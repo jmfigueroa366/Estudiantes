@@ -4,6 +4,7 @@
  */
 package git_hud;
 
+import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,10 +39,22 @@ public class Git_hud {
         
         boolean encontrado=false;
         boolean m_encontrado=false;
+        String codigo;
+        Double valor;
+        int cr;
         
-        System.out.println("Ingrese el codigo del estudiante al cual se le asignará la nota: ");    
-        String codigo=leer.readLine();
+        try {
+            
+            System.out.println("Ingrese el codigo del estudiante al cual se le asignará la nota: ");    
+            codigo=leer.readLine();
+            
+        } catch (Exception e) {
+            System.out.println("Error de tipo " + e);
+        }
         
+        if (estudiante.isEmpty() && asignatura.isEmpty()) {
+            System.out.println("No hay estudiantes o asignaturas a las cuales asignarles nota");
+        } else {
         for (Estudiante es :estudiante ) {
             
             if (es.getCodigo().equals(codigo)) {
@@ -57,12 +70,27 @@ public class Git_hud {
                         
                         m_encontrado=true;
                         
+                        try {
+                            
                         System.out.println("Ingrese el valor de la nota: ");
-                        Double valor=Double.parseDouble(leer.readLine());
+                        valor=Double.parseDouble(leer.readLine());
                         
+                        } catch (NumberFormatException e) {
+                            
+                            System.out.println("Error de tipo " + e);
+                            
+                        }
                         
+                        try {
+                            
                         System.out.println("Ingrese los creditos de la nota: ");
-                        int cr=Integer.parseInt(leer.readLine());
+                        cr=Integer.parseInt(leer.readLine()); 
+                        
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error de tipo " + e);
+                        }
+                        
+                        
                         
                         Nota n=new Nota(es,as,valor,cr);
                         
@@ -83,9 +111,14 @@ public class Git_hud {
         if (!encontrado) {
             System.out.println("No se encontro el estudiante ingresado");
         }
+      }
     }
     
     public static void listarNotas() throws IOException{
+        
+        if (notas.isEmpty()) {
+            System.out.println("No hay registros");
+        } else {
         
         for (Nota n2 : notas) {
             
@@ -96,18 +129,37 @@ public class Git_hud {
             System.out.println("=================================");
             
         }
-        
+      } 
     }
     
     public static void buscarNotas() throws IOException{
         
         boolean encontrado=false;
+        String estudiante = null;
+        Double valor = null;
         
-        System.out.println("Ingrese el codigo del estudiante a consultar");
-        String estudiante= leer.readLine();
+        try {
+            
+            System.out.println("Ingrese el codigo del estudiante a consultar");
+            estudiante= leer.readLine();
+            
+        } catch (Exception e) {
+            System.out.println("Error de tipo " + e);
+        }
         
-        System.out.println("Ingrese el valor de la nota a consultar");
-        double valor=Double.parseDouble(leer.readLine());
+        
+        try {
+            
+            System.out.println("Ingrese el valor de la nota a consultar");
+            valor=Double.parseDouble(leer.readLine());
+            
+        } catch (NullPointerException e) {
+            System.out.println("Error de tipo " + e);
+        }
+        
+        if (notas.isEmpty()) {
+            System.out.println("No hay registros");
+        } else {
         
         for (Nota n : notas) {
             
@@ -126,18 +178,41 @@ public class Git_hud {
         if (!encontrado) {
             System.out.println("No se encontró el estudiante");
         }
-        
+      }
     }
     
     public static void actualizarNotas() throws IOException{
         
-        System.out.println("Ingrese el codigo del estudiante: ");
-        String codigo=leer.readLine();
-        
-        System.out.println("Ingrese la asignatura: ");
-        String asig=leer.readLine();
-        
+         
         boolean encontrado=false;
+        String asig = null,codigo = null;
+        
+        try {
+            
+            System.out.println("Ingrese el codigo del estudiante: ");
+            codigo=leer.readLine();
+            
+        } catch (Exception e) {
+            
+            System.out.println("Error de tipo " + e);
+            
+        }
+        
+        try {
+            
+            System.out.println("Ingrese la asignatura: ");
+            asig=leer.readLine();
+            
+        } catch (Exception e) {
+            System.out.println("Error de tipo " + e);
+        }
+        
+        if (notas.isEmpty()) {
+            
+            System.out.println("No hay registros");
+            
+        } else {
+        
         
         for (Nota n : notas) {
             
@@ -159,24 +234,45 @@ public class Git_hud {
         if (!encontrado) {
             System.out.println("No se encontró el valor ingresado");
         }
-        
+      } 
     }
     
     public static void eliminarNota() throws IOException{
         
-        System.out.println("Ingrese el codigo de la nota a eliminar");
-        Double valor=Double.parseDouble(leer.readLine());
-        
-        System.out.println("Ingrese la nota de la materia ");
-        String codigo=leer.readLine();
-        
+        String codigo = null;
+        Double valor = 0.0;
         boolean encontrado=false;
+        
+        try {
+            
+            System.out.println("Ingrese el valor de la nota a eliminar");
+            valor=Double.parseDouble(leer.readLine());
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Error de tipo " + e);
+        }
+        
+        try {
+            
+            System.out.println("Ingrese la el nombre de la materia a eliminar ");
+            codigo=leer.readLine();
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Error de tipo " + e);
+        }
+        
+        if (notas.isEmpty()) {
+            
+            System.out.println("No hay registros");
+            
+        } else {
+        
         
         for (int i = 0; i < notas.size(); i++) {
             
             Nota n=notas.get(i);
             
-            if (valor.equals(n.getValor()) && codigo.equals(n.getAsignatura().getNombre())) {
+            if (valor.equals(n.getValor()) && n.getAsignatura().getNombre().equals(codigo)) {
                 
                 notas.remove(n);
                 
@@ -191,6 +287,7 @@ public class Git_hud {
         if (!encontrado) {
             System.out.println("Los valores no coinciden con los registros");
         }
+      }
         
     }
 }
