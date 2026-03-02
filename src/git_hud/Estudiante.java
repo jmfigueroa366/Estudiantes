@@ -14,9 +14,6 @@ import java.util.Scanner;
 
 public class Git_hud {
     
-    private static ArrayList<Asignatura> asignatura = new ArrayList <> ();
-    private static ArrayList<Asignatura> asignaturaEstudiante = new ArrayList <> ();
-    private static Scanner sc = new Scanner (System.in);
     
 }
     /**
@@ -26,7 +23,11 @@ public class Git_hud {
         // TODO code application logic here
     }
 
-public static void Estudiante() {
+public class Estudiante {
+
+    private static ArrayList<Asignatura> asignatura = new ArrayList <> ();
+    private static ArrayList<Asignatura> asignaturaEstudiante = new ArrayList <> ();
+    private static Scanner sc = new Scanner (System.in);
 
     private String codigo;
     private String nombre;
